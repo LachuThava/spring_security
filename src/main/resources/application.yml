@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: auth
+  datasource:
+    url: jdbc:mysql://localhost:3306/auth_service?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+api:
+  white-list : /user/v1/api/create, /user/v1/api/get/all
+
+jwt:
+  secret-key: fdbb83a15caea4cb1c61ad3cfdde0fbec8d373b46765c08e70e1580802ce8bbb
