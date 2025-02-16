@@ -23,7 +23,7 @@ public class DataLoader implements CommandLineRunner {
             Role userRole = Role
                     .builder()
                     .permissions(List.of(Permission.PERMISSION_READ, Permission.PERMISSION_WRITE))
-                    .roleName(com.service.auth.Enum.Role.ROLE_USER.toString())
+                    .roleName(com.service.auth.Enum.Role.ROLE_USER)
                     .build();
 
             roleRepository.save(userRole);
@@ -36,7 +36,7 @@ public class DataLoader implements CommandLineRunner {
                             Permission.PERMISSION_DELETE,
                             Permission.PERMISSION_UPDATE,
                             Permission.PERMISSION_ALL))
-                    .roleName(com.service.auth.Enum.Role.ROLE_ADMIN.toString())
+                    .roleName(com.service.auth.Enum.Role.ROLE_ADMIN)
                     .build();
 
             roleRepository.save(adminRole);

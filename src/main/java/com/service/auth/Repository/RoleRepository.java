@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface RoleRepository extends CrudRepository<Role, Long> {
 
-     Role findByRoleName(String name);
+     Role findByRoleName(com.service.auth.Enum.Role name);
 
      List<Role> findAll();
 

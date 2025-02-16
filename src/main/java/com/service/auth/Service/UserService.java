@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public interface UserService {
 
-    User createUser(UserDto userDto);
+    UserDto createUser(UserDto userDto);
 
-    List<User> getAllUsers();
+    List<UserDto> getAllUsers();
 }

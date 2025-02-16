@@ -1,10 +1,10 @@
 package com.service.auth.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.service.auth.Enum.Gender;
 import lombok.*;
 import javax.persistence.*;
-import java.util.List;
-
+import java.util.Set;
 
 
 @Getter
@@ -17,7 +17,7 @@ import java.util.List;
 public class User  {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long id;
 
@@ -27,8 +27,10 @@ public class User  {
 
     private Gender gender;
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
-    private List<Role> role;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER,targetEntity = AuthenticationRole.class,cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private Set<AuthenticationRole> authenticationRoles;
 
     private Integer age;
 
