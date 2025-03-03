@@ -15,7 +15,20 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 api:
-  white-list : /user/v1/api/create, /user/v1/api/get/all
+  white-list : /user/v1/api/create, /user/v1/api/get/all, /user/auth/login
 
 jwt:
   secret-key: fdbb83a15caea4cb1c61ad3cfdde0fbec8d373b46765c08e70e1580802ce8bbb
+
+user:
+  api:
+    header: /user/v1/api
+    method:
+      create-user: /create
+      get-all: /get/all
+auth:
+  user:
+    header: /user/auth
+    method:
+      login: /login
+      logout: /logout

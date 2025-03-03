@@ -15,8 +15,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private  UserRepository userRepository;
+    private final UserRepository userRepository;
 
 
     @Override
@@ -34,6 +33,6 @@ public class CustomUserDetailsService implements UserDetailsService {
              userPrincipal.setName(user.getName());
              return userPrincipal;
          }
-        return new UserPrincipal();
+        return null;
     }
 }

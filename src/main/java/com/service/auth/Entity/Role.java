@@ -1,8 +1,7 @@
 package com.service.auth.Entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.service.auth.Enum.Permission;
+import com.service.auth.Enum.*;
 import lombok.*;
 
 import javax.persistence.*;

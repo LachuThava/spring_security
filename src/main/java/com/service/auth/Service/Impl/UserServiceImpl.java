@@ -8,6 +8,7 @@ import com.service.auth.Repository.AuthenticationRoleRepository;
 import com.service.auth.Repository.RoleRepository;
 import com.service.auth.Repository.UserRepository;
 import com.service.auth.Service.UserService;
+import com.service.auth.Util.EncoderCommon;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -58,6 +59,7 @@ public class UserServiceImpl implements UserService {
                             .filter(authenticationRole -> authenticationRole.getRole() != null)
                             .map(authenticationRole -> authenticationRole.getRole().getRoleName())
                             .toList();
+                    log.info("LOG :: getAuthenticationRoles : {}",user.getAuthenticationRoles());
                     UserDto build = UserDto
                             .builder()
                             .id(user.getId())
@@ -82,7 +84,7 @@ public class UserServiceImpl implements UserService {
 
         User user = new User();
         user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
+        user.setPassword(EncoderCommon.encodePasswordStrength5(userDto.getPassword()));
         user.setName(userDto.getName());
         user.setAge(userDto.getAge());
         user.setGender(userDto.getGender());

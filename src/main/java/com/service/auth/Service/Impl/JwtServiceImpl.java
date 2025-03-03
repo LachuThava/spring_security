@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.time.Instant;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.HashMap;
@@ -41,13 +42,15 @@ public class JwtServiceImpl implements JwtService {
     }
 
     @Override
-    public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+    public String generateToken(UserDetails userDetails,int month) {
+        return generateToken(new HashMap<>(), userDetails, month);
     }
 
     @Override
-    public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-       return buildToken(extraClaims, userDetails, Instant.now().plus(2, ChronoUnit.MONTHS).getEpochSecond());
+    public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails , int month) {
+       return buildToken(extraClaims, userDetails,Instant.now().atZone(ZoneId.systemDefault())
+               .plusMonths(month)
+               .toEpochSecond());
 
     }
 
